@@ -1,0 +1,26 @@
+pkgbase = slimblade
+	pkgdesc = Userspace button and scroll manager for Kensington SlimBlade trackballs (CLI + Material 3 GUI)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ioloryn/slimblade
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = librsvg
+	makedepends = libayatana-appindicator
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = libdbus
+	depends = libevdev
+	depends = hicolor-icon-theme
+	optdepends = systemd: for the user service (slimblade.service)
+	optdepends = xdg-desktop-portal: for desktop integration
+	source = slimblade-0.1.0.tar.gz::https://github.com/ioloryn/slimblade/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 08e6682580a75c5d9c46df2f76e2b37720cbeb95775f17fec6baf9e824c7a602
+
+pkgname = slimblade

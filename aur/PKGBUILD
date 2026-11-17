@@ -1,0 +1,60 @@
+# Maintainer: ioloryn <ioloryn@gmail.com>
+pkgname=slimblade
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Userspace button and scroll manager for Kensington SlimBlade trackballs (CLI + Material 3 GUI)"
+arch=('x86_64')
+url="https://github.com/ioloryn/slimblade"
+license=('MIT')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'gtk3'
+  'webkit2gtk-4.1'
+  'libsoup3'
+  'libdbus'
+  'libevdev'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'rust'
+  'cargo'
+  'pkgconf'
+  'librsvg'
+  'libayatana-appindicator'
+)
+optdepends=(
+  'systemd: for the user service (slimblade.service)'
+  'xdg-desktop-portal: for desktop integration'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ioloryn/slimblade/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('08e6682580a75c5d9c46df2f76e2b37720cbeb95775f17fec6baf9e824c7a602')
+
+build() {
+  local target_dir="$srcdir/target"
+  cd "$srcdir/$pkgname-$pkgver"
+  CARGO_TARGET_DIR="$target_dir" cargo build --release --locked --bin slimblade --bin slimblade-gui
+}
+
+package() {
+  local target_dir="$srcdir/target"
+  cd "$srcdir/$pkgname-$pkgver"
+
+  install -Dm755 "$target_dir/release/slimblade" "$pkgdir/usr/bin/slimblade"
+  install -Dm755 "$target_dir/release/slimblade-gui" "$pkgdir/usr/bin/slimblade-gui"
+
+  install -Dm644 packaging/slimblade-gui.desktop \
+    "$pkgdir/usr/share/applications/slimblade-gui.desktop"
+  install -Dm644 packaging/slimblade-gui-autostart.desktop \
+    "$pkgdir/etc/xdg/autostart/slimblade-gui-autostart.desktop"
+  install -Dm644 packaging/slimblade.service \
+    "$pkgdir/usr/lib/systemd/user/slimblade.service"
+  install -Dm644 packaging/70-slimblade.rules \
+    "$pkgdir/usr/share/slimblade/70-slimblade.rules"
+  install -Dm644 icons/icon.png \
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/slimblade.png"
+
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

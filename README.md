@@ -45,6 +45,13 @@ chmod +x SlimBlade-$VERSION-x86_64.AppImage
 ./SlimBlade-$VERSION-x86_64.AppImage
 ```
 
+Для Arch/CachyOS/Manjaro также доступен пакет в AUR:
+
+```bash
+yay -S slimblade      # или paru -S slimblade
+```
+
+Файлы для публикации пакета лежат в каталоге [`aur/`](aur/).
 После установки выполните `slimblade doctor` и установите udev-правило
 (см. [Права доступа](#права-доступа)).
 

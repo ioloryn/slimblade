@@ -1,6 +1,10 @@
 /target
 /frontend/node_modules
 /gen
+/aur/src
+/aur/pkg
+/aur/*.pkg.tar.zst
+/aur/*.tar.gz
 *.tmp
 *.swp
 .DS_Store
