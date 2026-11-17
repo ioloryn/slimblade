@@ -98,6 +98,7 @@ tar -czf "$OUT_DIR/.rpmbuild/SOURCES/slimblade-$VERSION.tar.gz" \
   -C "$OUT_DIR/.rpmstage" "slimblade-$VERSION"
 cat > "$OUT_DIR/.rpmbuild/SPECS/slimblade.spec" <<EOF
 %global _build_id_links none
+%global debug_package %{nil}
 Name:           slimblade
 Version:        $VERSION
 Release:        1%{?dist}
