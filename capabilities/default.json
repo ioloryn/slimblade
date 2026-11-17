@@ -1,0 +1,7 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "identifier": "default",
+  "description": "Tauri core permissions for the SlimBlade settings window",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

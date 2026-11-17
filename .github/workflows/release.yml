@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build & publish release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine version
+        id: version
+        run: echo "value=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Install build & packaging dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential pkg-config libwebkit2gtk-4.1-dev librsvg2-dev \
+            libayatana-appindicator3-dev libxdo-dev libssl-dev \
+            curl wget file dpkg-dev rpm zstd desktop-file-utils
+
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build release binaries
+        run: cargo build --release --bin slimblade --bin slimblade-gui
+
+      - name: Download appimagetool
+        run: |
+          curl -fL -o /tmp/appimagetool.AppImage \
+            https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x /tmp/appimagetool.AppImage
+          # Avoid FUSE requirement in CI by extracting the tool
+          /tmp/appimagetool.AppImage --appimage-extract >/dev/null
+          echo "$PWD/squashfs-root/AppRun" > /tmp/appimagetool_path
+
+      - name: Build packages
+        run: |
+          APPIMAGETOOL="$(cat /tmp/appimagetool_path)" \
+            bash scripts/package.sh "${{ steps.version.outputs.value }}" \
+            target/release artifacts
+
+      - name: Verify artifacts
+        run: ls -lh artifacts/
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true
+          fail_on_unmatched_files: true

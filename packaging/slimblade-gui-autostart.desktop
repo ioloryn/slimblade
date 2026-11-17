@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SlimBlade (трей)
+Comment=Запустить демон и настройки Kensington SlimBlade в системном трее
+Exec=slimblade-gui --hidden
+Icon=input-mouse
+Terminal=false
+X-GNOME-Autostart-enabled=true
+X-KDE-autostart-after=panel
+Categories=Settings;HardwareSettings;Utility;

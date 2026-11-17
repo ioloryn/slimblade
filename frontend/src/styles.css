@@ -1,0 +1,306 @@
+/* Material 3 baseline tonal palette. Components read these CSS variables. */
+:root {
+  color-scheme: light;
+  --md-sys-color-primary: #6750a4;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #eaddff;
+  --md-sys-color-on-primary-container: #21005d;
+  --md-sys-color-secondary: #625b71;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #e8def8;
+  --md-sys-color-on-secondary-container: #1d192b;
+  --md-sys-color-tertiary: #7d5260;
+  --md-sys-color-surface: #fffbfe;
+  --md-sys-color-surface-dim: #ded8e1;
+  --md-sys-color-surface-bright: #fffbfe;
+  --md-sys-color-surface-container: #f3edfd;
+  --md-sys-color-surface-container-low: #f7f2fa;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-high: #ece6f0;
+  --md-sys-color-surface-container-highest: #e6e0e9;
+  --md-sys-color-on-surface: #1c1b1f;
+  --md-sys-color-on-surface-variant: #49454f;
+  --md-sys-color-outline: #79747e;
+  --md-sys-color-outline-variant: #cac4d0;
+  --md-sys-color-error: #b3261e;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #f9dedc;
+  --md-sys-color-inverse-surface: #322f35;
+  --md-sys-color-inverse-on-surface: #f5eff7;
+  --md-ref-typeface-brand: Roboto, 'Segoe UI', sans-serif;
+  --md-ref-typeface-plain: Roboto, 'Segoe UI', sans-serif;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --md-sys-color-primary: #d0bcff;
+  --md-sys-color-on-primary: #381e72;
+  --md-sys-color-primary-container: #4f378b;
+  --md-sys-color-on-primary-container: #eaddff;
+  --md-sys-color-secondary: #ccc2dc;
+  --md-sys-color-on-secondary: #332b40;
+  --md-sys-color-secondary-container: #4a4458;
+  --md-sys-color-on-secondary-container: #e8def8;
+  --md-sys-color-tertiary: #efb8c8;
+  --md-sys-color-surface: #1c1b1f;
+  --md-sys-color-surface-dim: #141316;
+  --md-sys-color-surface-bright: #37343a;
+  --md-sys-color-surface-container: #2b282e;
+  --md-sys-color-surface-container-low: #211f24;
+  --md-sys-color-surface-container-lowest: #0f0d12;
+  --md-sys-color-surface-container-high: #36323a;
+  --md-sys-color-surface-container-highest: #423e47;
+  --md-sys-color-on-surface: #e6e1e5;
+  --md-sys-color-on-surface-variant: #cac4d0;
+  --md-sys-color-outline: #938f99;
+  --md-sys-color-outline-variant: #49454f;
+  --md-sys-color-error: #f2b8b5;
+  --md-sys-color-on-error: #601410;
+  --md-sys-color-error-container: #8c1d18;
+  --md-sys-color-inverse-surface: #e6e1e5;
+  --md-sys-color-inverse-on-surface: #322f35;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 14px;
+}
+
+.app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px 18px;
+  background: var(--md-sys-color-surface-container);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.app-bar h1 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.app-bar .subtitle {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 12px;
+}
+
+.app-bar .spacer { flex: 1 1 auto; }
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.zoom {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+.zoom > span:first-child { display: none; }
+
+.content {
+  padding: 14px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+md-elevated-card {
+  --md-elevated-card-container-color: var(--md-sys-color-surface-container-low);
+  display: block;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 18px 14px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+.muted {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 11px;
+  margin: 0;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 6px 16px;
+  align-items: baseline;
+  font-size: 13px;
+}
+
+.status-grid .label {
+  color: var(--md-sys-color-on-surface-variant);
+  white-space: nowrap;
+}
+.status-grid .value { word-break: break-word; line-height: 1.35; }
+.status-ok { color: #1b5e20; }
+.status-bad { color: var(--md-sys-color-error); }
+.status-wait { color: #9a6700; }
+[data-theme='dark'] .status-ok { color: #81c784; }
+[data-theme='dark'] .status-wait { color: #e6c064; }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.scroll-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.check-label { font-size: 13px; white-space: nowrap; }
+.v-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--md-sys-color-outline-variant);
+  margin: 0 4px;
+}
+.scroll-row md-slider { flex: 1 1 240px; }
+.slider-label {
+  font-weight: 500;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.slider-value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  text-align: right;
+  min-width: 44px;
+  font-size: 13px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 14px;
+}
+
+.trackball-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.trackball { width: 100%; max-width: 360px; height: auto; }
+.tb-zone { cursor: pointer; }
+.tb-zone rect {
+  fill: rgba(255, 255, 255, 0);
+  stroke: transparent;
+  stroke-width: 1.5;
+  transition: fill 0.15s ease, stroke 0.15s ease;
+}
+.tb-zone:hover rect,
+.tb-zone.selected rect {
+  fill: rgba(208, 188, 255, 0.16);
+  stroke: #d0bcff;
+  stroke-width: 2;
+}
+.tb-label {
+  font-size: 13px;
+  font-weight: 600;
+  fill: #ececf0;
+  pointer-events: none;
+}
+.tb-summary {
+  font-size: 11px;
+  fill: #b9b9c2;
+  pointer-events: none;
+}
+.tb-logo {
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  fill: #9a9aa2;
+  pointer-events: none;
+}
+
+.buttons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  align-items: end;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--md-sys-color-surface-container-low);
+}
+
+.button-row .label { font-weight: 500; }
+.button-row .detail { font-size: 11px; color: var(--md-sys-color-on-surface-variant); }
+
+.log-view {
+  margin: 0;
+  padding: 8px 10px;
+  max-height: 140px;
+  overflow: auto;
+  border-radius: 10px;
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  font-family: ui-monospace, 'Roboto Mono', monospace;
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.notice {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+.notice.error {
+  background: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error);
+}
+
+md-outlined-text-field, md-filled-text-field { width: 100%; }
+md-outlined-select { min-width: 180px; width: 100%; }
+md-slider { width: 100%; }
+
+.dialog-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 320px;
+  padding: 4px 0 8px;
+}
+
+

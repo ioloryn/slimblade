@@ -1,0 +1,8 @@
+# Give the active seat user read/write access to Kensington SlimBlade event
+# nodes. Install as /etc/udev/rules.d/70-slimblade.rules and reload udev:
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+#
+# The rule number must be lower than 73-seat-late.rules, which is where udev
+# applies the uaccess ACL. A 99-* rule adds TAG+="uaccess" too late and has no
+# effect.
+ACTION=="add|change", SUBSYSTEM=="input", KERNEL=="event*", ATTRS{id/vendor}=="047d", ATTRS{name}=="*Slim*ade*", TAG+="uaccess"

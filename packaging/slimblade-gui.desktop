@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=SlimBlade
+GenericName=Настройка трекбола Kensington SlimBlade
+Comment=Управление кнопками, прокруткой и демоном Kensington SlimBlade
+Exec=slimblade-gui
+Icon=input-mouse
+Terminal=false
+Categories=Settings;HardwareSettings;Utility;
+Keywords=Kensington;SlimBlade;Trackball;Mouse;
+StartupNotify=true
+StartupWMClass=SlimBlade

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "SlimBlade",
+  "version": "0.1.0",
+  "identifier": "com.slimblade.gui",
+  "build": {
+    "frontendDist": "dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "SlimBlade",
+        "width": 900,
+        "height": 760,
+        "minWidth": 560,
+        "minHeight": 480,
+        "center": true,
+        "resizable": true,
+        "visible": true,
+        "decorations": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": false,
+    "icon": []
+  }
+}
