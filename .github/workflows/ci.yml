@@ -49,9 +49,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends pkg-config libdbus-1-dev
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
-      - name: Build slimblade (no GUI deps)
+      - name: Build slimblade
         run: cargo build --release --bin slimblade
       - name: Smoke test
         run: ./target/release/slimblade --version

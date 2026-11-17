@@ -11,7 +11,10 @@ PKGNAME="slimblade"
 DESC="Userspace button and scroll manager for Kensington SlimBlade trackballs"
 URL="https://github.com/ioloryn/slimblade"
 
+# rpmbuild resolves _topdir as absolute; relative paths break %prep.
 mkdir -p "$OUT_DIR"
+BIN_DIR="$(realpath "$BIN_DIR")"
+OUT_DIR="$(realpath "$OUT_DIR")"
 
 # Create a filesystem tree that is used as the base for every package format.
 make_pkgroot() {
