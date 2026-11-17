@@ -45,13 +45,27 @@ chmod +x SlimBlade-$VERSION-x86_64.AppImage
 ./SlimBlade-$VERSION-x86_64.AppImage
 ```
 
-Для Arch/CachyOS/Manjaro также доступен пакет в AUR:
+### Arch / CachyOS / Manjaro
+
+Готовый пакет `.pkg.tar.zst` лежит в [релизах](https://github.com/ioloryn/slimblade/releases):
 
 ```bash
-yay -S slimblade      # или paru -S slimblade
+curl -fLO https://github.com/ioloryn/slimblade/releases/latest/download/slimblade-0.1.0-x86_64.pkg.tar.zst
+sudo pacman -U slimblade-0.1.0-x86_64.pkg.tar.zst
 ```
 
-Файлы для публикации пакета лежат в каталоге [`aur/`](aur/).
+Или сборка из исходников с помощью PKGBUILD из каталога [`aur/`](aur/):
+
+```bash
+git clone https://github.com/ioloryn/slimblade.git
+cd slimblade/aur
+makepkg -si
+```
+
+Публикация в AUR сейчас отложена: регистрация новых аккаунтов AUR
+приостановлена разработчиками из-за волны вредоносных пакетов. Как только
+регистрация возобновится, пакет можно будет залить готовыми файлами из
+[`aur/`](aur/) (подробности — [`aur/README.md`](aur/README.md)).
 После установки выполните `slimblade doctor` и установите udev-правило
 (см. [Права доступа](#права-доступа)).
 
